@@ -7,7 +7,8 @@ export const fetchJsonHouse = async () => {
             name: member.first_name + ' ' + member.last_name,
             state: member.state,
             party: member.party,
-            years: (parseInt(member.begin_date) - parseInt(member.end_date)) * -1
+            years: (parseInt(member.begin_date) - parseInt(member.end_date)) * -1,
+            percVotes: null
         }));
 
 
