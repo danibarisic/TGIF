@@ -3,9 +3,16 @@ export const fetchJsonHouse = async () => {
         const response = await fetch('./HouseData.json');
         const data = await response.json();
         const members = data[0].results[0].members;
+        const selectMember = members.map(member => ({
+            name: member.first_name + ' ' + member.last_name,
+            state: member.state,
+            party: member.party,
+            years: (parseInt(member.begin_date) - parseInt(member.end_date)) * -1
+        }));
+
 
         if (Array.isArray(members)) {
-            makeMemberRowsHouse(members);
+            makeMemberRowsHouse(selectMember);
         } else {
             console.error('No Members.');
         }
@@ -19,9 +26,16 @@ export const fetchJsonSenate = async () => {
         const response = await fetch('./SenateData.json');
         const data = await response.json();
         const members = data[0].results[0].members;
+        const selectMember = members.map(member => ({
+            name: member.first_name + ' ' + member.last_name,
+            state: member.state,
+            party: member.party,
+            years: null,
+            percVotes: member.votes_with_party_pct
+        }));
 
         if (Array.isArray(members)) {
-            makeMemberRowsSenate(members);
+            makeMemberRowsSenate(selectMember);
         } else {
             console.error('No members found.');
         }
