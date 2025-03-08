@@ -12,7 +12,7 @@
 .logo-container {
     display: flex;
     flex-direction: row;
-    margin-left: 30px;
+    margin-left: 12em;
 
 }
 
@@ -23,7 +23,7 @@
 }
 
 .title-container {
-    margin-left: 20px;
+    margin-left: 1em;
     font-size: 20px;
 }
 
@@ -38,19 +38,32 @@
 
 h1 {
     margin-top: 60px;
+    font-size: 60px;
     font-family: Newsreader;
+}
+
+.email-container {
+    justify-content: right;
+    font-size: 20px;
+    margin-right: 6em;
+    margin-top: 4em;
+}
+
+#contact-email {
+    font-size: 22px;
 }
 
 /* body styles */
 h2 {
     font-family: Newsreader;
-    margin-left: 40px;
-    margin-top: 20px;
+    margin: 10px 5em;
+    font-size: 2.5em;
+    padding-bottom: 5px;
 }
 
 #main-image {
     width: 180px;
-    margin-right: 35px;
+    margin-right: 10em;
     margin-top: 150px;
 }
 
@@ -64,12 +77,17 @@ a {
     text-decoration: none;
 }
 
+.navbar-collapse .navbar-nav .nav-link {
+    font-size: 22px;
+}
+
 .nav-bar a {
     font-family: Newsreader;
     color: rgb(0, 178, 243);
     text-decoration: none;
     position: relative;
     margin: 0%;
+    font-size: 40px;
 }
 
 .navbar-link:hover {
@@ -99,7 +117,10 @@ a {
 
 .info-container p {
     font-family: Newsreader;
-    margin: 40px;
+    margin: 2em 10em;
+    width: 60%;
+    font-size: 20px;
+    padding-top: 5px;
 }
 
 .nav-bar {
@@ -117,21 +138,71 @@ a {
     overflow: hidden;
 }
 
-.table {
-    border: 2px solid rgb(140 140 140);
-    table-layout: auto;
-    width: auto;
+.all-filters-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.filter-state-container {
+    margin-right: 15em;
+    margin-top: 15px;
+    font-size: 20px;
     font-family: Newsreader;
-    margin-left: 40px;
-    margin-right: 40px;
+}
+
+.checkbox-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: left;
+    margin-left: 12em;
+    margin-bottom: 1em;
+}
+
+.checkbox-container label {
+    margin-top: 15px;
+    font-size: 20px;
+    font-family: Newsreader;
+}
+
+.checkbox-container p {
+    margin-top: 15px;
+    font-size: 20px;
+    font-family: Newsreader;
+}
+
+.filter-state-container {
+    margin-left: 2em;
+}
+
+#select-state {
+    padding: 5px;
+    margin-left: 20px;
+}
+
+.table {
+    display: table;
+    table-layout: auto;
+    border: 2px solid rgb(140 140 140);
+    width: 80%;
+    font-family: Newsreader;
+    margin: 0 auto;
 }
 
 .senate-table-body {
     font-size: medium;
 }
 
+.table th {
+    font-family: Newsreader;
+    text-align: center;
+    font-size: 20px;
+}
+
 .table td {
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-family: Newsreader;
     text-align: center;
 }
 
@@ -143,12 +214,11 @@ a {
     background-color: rgb(255, 249, 241);
     border-color: grey;
     border-width: 2px;
-    margin: 40px;
+    margin: 20px 5.5em;
 }
 
 .footer-container p {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0;
     font-size: 15px;
     text-align: center;
 }
