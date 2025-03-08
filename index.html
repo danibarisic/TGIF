@@ -22,8 +22,11 @@
                 </a>
             </div>
         </div>
-        <a id='contact-email' href="mailto:info@tgif.net">info@tgif.net</a>
+        <div class="email-container">
+            <a id='contact-email' href="mailto:info@tgif.net">info@tgif.net</a>
+        </div>
     </div>
+
     <div class="navbar-container">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -76,7 +79,8 @@
     <div class="info-container">
         <div>
             <h2>About Us</h2>
-            <p>Openness, accountability, and honesty define government transparency. In a free society, transparency
+            <p class='paragraph'>Openness, accountability, and honesty define government transparency. In a free
+                society, transparency
                 is
                 government's obligation to share information with citizens. It is at the heart of how citizens hold
                 their
@@ -91,7 +95,7 @@
                 their
                 Government is doing.
             </p>
-            <p>
+            <p class="paragraph">
                 We also believe that government should be participatory. Public engagement enhances the Government's
                 effectiveness and improves the quality of its decisions. Knowledge is widely dispersed in society,
                 and
@@ -105,7 +109,7 @@
                 feedback
                 to identify information of greatest use to the public.
             </p>
-            <p><a href="...">Read more</a></p>
+            <p id="readMore"><a href="...">Read more</a></p>
         </div>
 
         <div class="image-container">
@@ -121,8 +125,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-    <script type="module"
-        src="script.js">import { fetchSenateJson, makeHtml, makeMemberRows } from './script.js';</script>
+    <script type="module" src="script.js">import { appendLinksToParagraphs } from './script.js';</script>
 </body>
 
 </html>
