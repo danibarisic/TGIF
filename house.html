@@ -22,8 +22,11 @@
                 </a>
             </div>
         </div>
-        <a id='contact-email' href="mailto:info@tgif.net">info@tgif.net</a>
+        <div class="email-container">
+            <a id='contact-email' href="mailto:info@tgif.net">info@tgif.net</a>
+        </div>
     </div>
+
     <div class="navbar-container">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -90,69 +93,24 @@
         </div>
     </div>
 
+    <div class="all-filters-container">
+        <div class="checkbox-container">
+            <p>Filter by Party: </p>
+            <label class="checkbox-label" for="republican">Republican</label>
+            <input type="checkbox" id="republican" name="republican" checked>
+            <label class="checkbox-label" for="democratic">Democratic</label>
+            <input type="checkbox" id="democratic" name="democratic" checked>
+            <label class="checkbox-label" for="independent">Independent</label>
+            <input type="checkbox" id="independent" name="independent" checked>
+        </div>
+        <div class="filter-state-container">
+            <label for="select-state">Filter by State:</label>
+            <select class="states-menu" name="states" id="select-state">
+            </select>
+        </div>
+    </div>
+
     <div class="table-container">
-        <!-- <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Party</th>
-                    <th>State</th>
-                    <th>Years in Office</th>
-                    <th>% Votes with Party</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th class="member.name">Alma Adams</th>
-                    <td class="member.party">D</td>
-                    <td class="member.state">NC</td>
-                    <td class="member.seniority">2</td>
-                    <td class="member.votes_pct">98</td>
-                </tr>
-                <tr>
-                    <th class="member.name">Robert B. Aderholt</th>
-                    <td class="member.party">R</td>
-                    <td class="member.state">AL</td>
-                    <td class="member.seniority">18</td>
-                    <td class="member.votes_pct">94</td>
-                </tr>
-                <tr>
-                    <th class="member.name">Rodney Alexander</th>
-                    <td class="member.party">R</td>
-                    <td class="member.state">LA</td>
-                    <td class="member.seniority">12</td>
-                    <td class="member.votes_pct">92</td>
-                </tr>
-                <tr>
-                    <th class="member.name">Justin Amish</th>
-                    <td class="member.party">R</td>
-                    <td class="member.state">MI</td>
-                    <td class="member.seniority">4</td>
-                    <td class="member.votes_pct">77</td>
-                </tr>
-                <tr>
-                    <th class="member.name">Mark Amodei</th>
-                    <td class="member.party">R</td>
-                    <td class="member.state">NV</td>
-                    <td class="member.seniority">4</td>
-                    <td class="member.votes_pct">94</td>
-                </tr>
-                <tr>
-                    <th class="member.name">Robert E. Andrews</th>
-                    <td class="member.party">D</td>
-                    <td class="member.state">NJ</td>
-                    <td class="member.seniority">26</td>
-                    <td class="member.votes_pct">90</td>
-                </tr>
-                <tr>
-                    <th class="member.name">Michele Bachmann</th>
-                    <td class="member.party">R</td>
-                    <td class="member.state">MN</td>
-                    <td class="member.seniority">8</td>
-                    <td class="member.votes_pct">94</td>
-                </tr>
-            </tbody>
-        </table> -->
         <table class="table">
             <thead>
                 <tr>
@@ -160,7 +118,6 @@
                     <th>Party</th>
                     <th>State</th>
                     <th>Years in Office</th>
-                    <th>% Votes with Party</th>
                 </tr>
             </thead>
             <tbody id="house-table-body">
@@ -181,7 +138,7 @@
     </script>
 
     <script type="module" src="script.js">
-        import { fetchJsonHouse, makeMemberRowsHouse } from './script.js';
+        import { fetchJsonHouse, makeMemberRowsHouse, createAnchors, buildStateMenu, stateDropdown } from './script.js';
     </script>
 
 </body>

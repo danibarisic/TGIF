@@ -24,8 +24,11 @@
                 </a>
             </div>
         </div>
-        <a id='contact-email' href="mailto:info@tgif.net">info@tgif.net</a>
+        <div class="email-container">
+            <a id='contact-email' href="mailto:info@tgif.net">info@tgif.net</a>
+        </div>
     </div>
+
     <div class="navbar-container">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -90,69 +93,25 @@
             </p>
         </div>
     </div>
+
+    <div class="all-filters-container">
+        <div class="checkbox-container">
+            <p>Filter by Party: </p>
+            <label class="checkbox-label" for="republican">Republican</label>
+            <input type="checkbox" id="republican" name="republican" checked>
+            <label class="checkbox-label" for="democratic">Democratic</label>
+            <input type="checkbox" id="democratic" name="democratic" checked>
+            <label class="checkbox-label" for="independent">Independent</label>
+            <input type="checkbox" id="independent" name="independent" checked>
+        </div>
+        <div class="filter-state-container">
+            <label for="select-state">Filter by State:</label>
+            <select class="states-menu" name="states" id="select-state">
+            </select>
+        </div>
+    </div>
+
     <div class="table-container">
-        <!-- <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Party</th>
-                    <th>State</th>
-                    <th>Years in Office</th>
-                    <th>% Votes with Party</th>
-                </tr>
-            </thead>
-            <tbody class="senate-table-body">
-                <tr>
-                    <th class="member.name">Lamar Alexander</th>
-                    <td class="member.party">R</td>
-                    <td class="member.state">TN</td>
-                    <td class="member.seniority">11</td>
-                    <td class="member.votes_pct">86</td>
-                </tr>
-                <tr>
-                    <th class="member.name">Kelly Ayotte</th>
-                    <td class="member.party">R</td>
-                    <td class="member.state">NH</td>
-                    <td class="member.seniority">3</td>
-                    <td class="member.votes_pct">81</td>
-                </tr>
-                <tr>
-                    <th class="member.name">Tammy Baldwin</th>
-                    <td class="member.party">D</td>
-                    <td class="member.state">WI</td>
-                    <td class="member.seniority">1</td>
-                    <td class="member.votes_pct">99</td>
-                </tr>
-                <tr>
-                    <th class="member.name">John Barrasso</th>
-                    <td class="member.party">R</td>
-                    <td class="member.state">WY</td>
-                    <td class="member.seniority">7</td>
-                    <td class="member.votes_pct">92</td>
-                </tr>
-                <tr>
-                    <th class="member.name">Max Baucus</th>
-                    <td class="member.party">D</td>
-                    <td class="member.state">MT</td>
-                    <td class="member.seniority">35</td>
-                    <td class="member.votes_pct">90</td>
-                </tr>
-                <tr>
-                    <th class="member.name">Mark Begich</th>
-                    <td class="member.party">D</td>
-                    <td class="member.state">AK</td>
-                    <td class="member.seniority">5</td>
-                    <td class="member.votes_pct">96</td>
-                </tr>
-                <tr>
-                    <th class="member.name">Michael Bennet</th>
-                    <td class="member.party">D</td>
-                    <td class="member.state">CO</td>
-                    <td class="member.seniority">5</td>
-                    <td class="member.votes_pct">98</td>
-                </tr>
-            </tbody>
-        </table> -->
         <table class="table">
             <thead>
                 <tr>
@@ -178,7 +137,7 @@
         crossorigin="anonymous"></script>
 
     <script type="module" src="script.js">
-        import { fetchJsonSenate, makeMemberRowsSenate } from './script.js';
+        import { fetchJsonSenate, makeMemberRowsSenate, buildStateMenu, stateDrowdown } from './script.js';
     </script>
 </body>
 
