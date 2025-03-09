@@ -9,8 +9,8 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href='styles.css'>
     <meta name="apple-mobile-web-app-title" content="TGIF">
-
     <title>TGIF - Senate</title>
+</head>
 
 <body>
     <div class="header-container">
@@ -98,11 +98,11 @@
         <div class="checkbox-container">
             <p>Filter by Party: </p>
             <label class="checkbox-label" for="republican">Republican</label>
-            <input type="checkbox" id="republican" name="republican" checked>
+            <input class="partyFilterCheckbox" value="R" type="checkbox" id="republican" name="partyFilter" checked>
             <label class="checkbox-label" for="democratic">Democratic</label>
-            <input type="checkbox" id="democratic" name="democratic" checked>
+            <input class="partyFilterCheckbox" value="D" type="checkbox" id="democratic" name="partyFilter" checked>
             <label class="checkbox-label" for="independent">Independent</label>
-            <input type="checkbox" id="independent" name="independent" checked>
+            <input class="partyFilterCheckbox" value="ID" type="checkbox" id="independent" name="partyFilter" checked>
         </div>
         <div class="filter-state-container">
             <label for="select-state">Filter by State:</label>
@@ -136,9 +136,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-    <script type="module" src="script.js">
-        import { fetchJsonSenate, makeMemberRowsSenate, buildStateMenu, stateDrowdown } from './script.js';
-    </script>
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>
