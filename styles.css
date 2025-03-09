@@ -149,6 +149,7 @@ a {
     margin-top: 15px;
     font-size: 20px;
     font-family: Newsreader;
+    margin-left: 2em;
 }
 
 .checkbox-container {
@@ -160,20 +161,11 @@ a {
     margin-bottom: 1em;
 }
 
+.checkbox-container p,
 .checkbox-container label {
     margin-top: 15px;
     font-size: 20px;
     font-family: Newsreader;
-}
-
-.checkbox-container p {
-    margin-top: 15px;
-    font-size: 20px;
-    font-family: Newsreader;
-}
-
-.filter-state-container {
-    margin-left: 2em;
 }
 
 #select-state {
