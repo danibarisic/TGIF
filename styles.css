@@ -180,6 +180,8 @@ a {
     width: 80%;
     font-family: Newsreader;
     margin: 0 auto;
+    margin-bottom: 50px;
+    margin-top: 40px;
 }
 
 .senate-table-body {
@@ -210,7 +212,8 @@ a {
 }
 
 .footer-container p {
-    margin: 10px 0;
+    padding: 10px 20px;
+    margin: 10px 20px;
     font-size: 15px;
     text-align: center;
 }
