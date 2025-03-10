@@ -73,8 +73,13 @@
                             </ul>
                         </li>
                     </ul>
-
                 </div>
+                <form class="form-inline my-4 my-lg-4">
+                    <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search"
+                        aria-label="Search">
+                    <button onclick="handleSearch()" class="btn btn-outline-success my-2 my-sm-0"
+                        type="submit">Search</button>
+                </form>
             </div>
         </nav>
     </div>
@@ -111,7 +116,7 @@
         </div>
     </div>
 
-    <div class="table-container">
+    <div id="table-container-senate">
         <table class="table">
             <thead>
                 <tr>
