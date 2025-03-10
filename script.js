@@ -1,6 +1,6 @@
 export const fetchJsonHouse = async (partyFilters = [], stateFilter = '') => {
     try {
-        const response = await fetch('./HouseData.json');
+        const response = await fetch('./houseData.json');
         const data = await response.json();
         const members = data[0].results[0].members;
         const selectMember = members.map(member => ({
@@ -18,7 +18,7 @@ export const fetchJsonHouse = async (partyFilters = [], stateFilter = '') => {
 
 export const fetchJsonSenate = async (partyFilters = [], stateFilter = '') => {
     try {
-        const response = await fetch('./SenateData.json');
+        const response = await fetch('./senateData.json');
         const data = await response.json();
         const members = data[0].results[0].members;
         const selectMember = members.map(member => ({
@@ -150,7 +150,8 @@ export const handleSearch = () => {
         alert("Please enter 'senate' or 'house'");
     }
 }
-handleSearch();
+
+// handleSearch();
 displayMembers();
 buildStateMenu();
 applyFilters();
