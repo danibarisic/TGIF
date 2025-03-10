@@ -128,5 +128,29 @@ export const buildStateMenu = async () => {
     }
 };
 
+export const displayMembers = () => {
+    const urlParameter = new URLSearchParams(window.location.search);
+    const chamber = urlParameter.get('chamber');
+    const tableHouse = document.getElementById('table-container-house');
+    const tableSenate = document.getElementById('table-container-senate');
+
+    if (chamber === 'senate') {
+        fetchJsonSenate(tableSenate);
+    } else if (chamber === 'house') {
+        fetchJsonHouse(tableHouse);
+    }
+}
+
+export const handleSearch = () => {
+    const chamberSelect = document.getElementById('searchInput');
+    const input = chamberSelect.value.toLowerCase();
+    if (input === 'senate' || input === 'house') {
+        window.location.href = `members.html?chamber=${input}`;
+    } else {
+        alert("Please enter 'senate' or 'house'");
+    }
+}
+
+displayMembers();
 buildStateMenu();
 applyFilters();
