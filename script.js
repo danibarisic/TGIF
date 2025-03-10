@@ -150,7 +150,7 @@ export const handleSearch = () => {
         alert("Please enter 'senate' or 'house'");
     }
 }
-
+handleSearch();
 displayMembers();
 buildStateMenu();
 applyFilters();
