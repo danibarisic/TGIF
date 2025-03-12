@@ -2,7 +2,8 @@ export const fetchJsonHouse = async (partyFilters = [], stateFilter = '') => {
     try {
         const response = await fetch('./houseData.json');
         const data = await response.json();
-        const members = data[0].results[0].members;
+        const members = data.results[0].members;
+        console.log(response);
         const selectMember = members.map(member => ({
             name: member.first_name + ' ' + member.last_name,
             state: member.state,
@@ -20,7 +21,7 @@ export const fetchJsonSenate = async (partyFilters = [], stateFilter = '') => {
     try {
         const response = await fetch('./senateData.json');
         const data = await response.json();
-        const members = data[0].results[0].members;
+        const members = data.results[0].members;
         const selectMember = members.map(member => ({
             name: member.first_name + ' ' + member.last_name,
             state: member.state,
@@ -42,6 +43,7 @@ const createAnchors = (senatorData, className) => {
         const senatorInfo = senatorData.find(senator => senator.name === senatorName);
         const link = document.createElement('a');
         link.textContent = senatorName;
+        link.classList.add('member-anchors');
         link.target = "_blank";
         link.href = senatorInfo.url;
         cell.textContent = '';
@@ -95,14 +97,14 @@ const applyFilters = async () => {
     const partyFilters = Array.from(document.querySelectorAll('.partyFilterCheckbox:checked')).map(checkbox => checkbox.value);
     const stateFilter = document.getElementById('select-state').value;
 
-    await fetchJsonSenate(partyFilters, stateFilter);
-    await fetchJsonHouse(partyFilters, stateFilter);
-};
+    const urlParameter = new URLSearchParams(window.location.search);
+    const chamber = urlParameter.get('chamber');
 
-const parties = {
-    D: 'Democrat',
-    R: 'Republican',
-    ID: 'Independent'
+    if (chamber === 'senate') {
+        await fetchJsonSenate(partyFilters, stateFilter);
+    } else {
+        await fetchJsonHouse(partyFilters, stateFilter);
+    }
 };
 
 export const buildStateMenu = async () => {
@@ -131,27 +133,43 @@ export const buildStateMenu = async () => {
 export const displayMembers = () => {
     const urlParameter = new URLSearchParams(window.location.search);
     const chamber = urlParameter.get('chamber');
-    const tableHouse = document.getElementById('table-container-house');
-    const tableSenate = document.getElementById('table-container-senate');
+    const informationHouse = document.getElementById('info-container-house');
+    const informationSenate = document.getElementById('info-container-senate');
+    const tableHouse = document.getElementsByClassName('table-container-house')[0];
+    const tableSenate = document.getElementsByClassName('table-container-senate')[0];
 
     if (chamber === 'senate') {
-        fetchJsonSenate(tableSenate);
-    } else if (chamber === 'house') {
-        fetchJsonHouse(tableHouse);
-    }
-}
-
-export const handleSearch = () => {
-    const chamberSelect = document.getElementById('searchInput');
-    const input = chamberSelect.value.toLowerCase();
-    if (input === 'senate' || input === 'house') {
-        window.location.href = `members.html?chamber=${input}`;
+        if (informationHouse) informationHouse.style.display = 'none';
+        if (tableHouse) tableHouse.style.display = 'none';
+        if (informationSenate) informationSenate.style.display = 'block';
+        if (tableSenate) tableSenate.style.display = 'block';
     } else {
-        alert("Please enter 'senate' or 'house'");
+        if (informationSenate) informationSenate.style.display = 'none';
+        if (tableSenate) tableSenate.style.display = 'none';
+        if (informationHouse) informationHouse.style.display = 'block';
+        if (tableHouse) tableHouse.style.display = 'block';
     }
 }
 
-// handleSearch();
+
+export const makeLinkActive = () => {
+    const currentPage = window.location.href;
+    const links = document.querySelectorAll('.nav-link');
+
+    links.forEach(link => {
+        if (currentPage === link.href) {
+            link.classList.add('active');
+            link.style.backgroundColor = 'rgb(222 222 222)';
+        } else {
+            link.classList.remove('active');
+            link.style.backgroundColor = '';
+        }
+    })
+}
+document.addEventListener('DOMContentLoaded', () => {
+    makeLinkActive();
+})
+
 displayMembers();
 buildStateMenu();
 applyFilters();
