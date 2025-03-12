@@ -42,6 +42,10 @@ h1 {
     font-family: Newsreader;
 }
 
+#logo-anchor {
+    text-decoration: none;
+}
+
 .email-container {
     justify-content: right;
     font-size: 20px;
@@ -50,7 +54,17 @@ h1 {
 }
 
 #contact-email {
+    font-family: Newsreader;
+    color: rgb(0, 178, 243);
+    margin-top: 80px;
+    margin-right: 35px;
+    justify-self: right;
+    text-decoration: none;
     font-size: 22px;
+}
+
+#mail-image {
+    width: 40px;
 }
 
 /* body styles */
@@ -62,56 +76,62 @@ h2 {
 }
 
 #main-image {
-    width: 180px;
-    margin-right: 10em;
+    width: 250px;
+    margin-right: 13em;
     margin-top: 150px;
+    margin-left: 0px;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-a {
+.member-anchors {
     font-family: Newsreader;
     color: rgb(0, 178, 243);
     text-decoration: none;
 }
 
-.navbar-collapse .navbar-nav .nav-link {
-    font-size: 22px;
+#contact-email:hover {
+    text-decoration: underline;
+    transition: 0.2s;
 }
 
-.nav-bar a {
-    font-family: Newsreader;
+#readmore-link {
     color: rgb(0, 178, 243);
     text-decoration: none;
-    position: relative;
-    margin: 0%;
-    font-size: 40px;
 }
 
-.navbar-link:hover {
-    background-color: rgb(215, 215, 215);
+#readmore-link:hover {
+    text-decoration: underline;
 }
 
-.navbar-container {
-    /* border-style: solid; */
-    border-color: grey;
-    border-width: 2px;
-    display: flex;
-    justify-content: center;
-    margin: 40px;
+.navigation-container {
+    border: 2px solid rgb(192 192 192);
+    margin: 40px 5.5em;
 }
 
-#contact-email {
-    margin-top: 80px;
-    margin-right: 35px;
-    justify-self: right;
+.nav-link {
+    font-size: 20px;
+    font-family: Newsreader;
+    text-decoration: none;
+    color: rgb(0, 178, 243);
+}
+
+.dropdown-item {
+    font-size: 20px;
+    font-family: Newsreader;
+    text-decoration: none;
+    color: rgb(0, 178, 243);
+}
+
+.nav-link:hover {
+    text-decoration: none;
 }
 
 .info-container {
+    margin-top: 5em;
     display: flex;
-    justify-content: space-around;
     flex-direction: row;
 }
 
@@ -123,21 +143,6 @@ a {
     padding-top: 5px;
 }
 
-.nav-bar {
-    height: 20px;
-    position: relative;
-    display: flex;
-    justify-content: left;
-    border-style: solid;
-    background-color: rgb(255, 249, 241);
-    border-color: grey;
-    border-width: 2px;
-    margin: 30px 30px;
-    padding: 10px 20px;
-    gap: 20px;
-    overflow: hidden;
-}
-
 .all-filters-container {
     display: flex;
     flex-direction: row;
@@ -146,7 +151,6 @@ a {
 
 .filter-state-container {
     margin-right: 15em;
-    margin-top: 15px;
     font-size: 20px;
     font-family: Newsreader;
     margin-left: 2em;
@@ -163,9 +167,14 @@ a {
 
 .checkbox-container p,
 .checkbox-container label {
-    margin-top: 15px;
     font-size: 20px;
     font-family: Newsreader;
+}
+
+.partyFilterCheckbox {
+    margin-top: 5px;
+    width: 18px;
+    height: 18px;
 }
 
 #select-state {
@@ -176,7 +185,7 @@ a {
 .table {
     display: table;
     table-layout: auto;
-    border: 2px solid rgb(140 140 140);
+    border: 2px solid rgb(192 192 192);
     width: 80%;
     font-family: Newsreader;
     margin: 0 auto;
@@ -204,10 +213,7 @@ a {
 .footer-container {
     display: flex;
     justify-content: center;
-    border-style: solid;
-    background-color: rgb(255, 249, 241);
-    border-color: grey;
-    border-width: 2px;
+    border: 2px solid rgb(192 192 192);
     margin: 20px 5.5em;
 }
 
