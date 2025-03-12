@@ -19,69 +19,49 @@
                 <img alt='magnifying glass' id='logo-image' src="/assets/Images/logo.png">
             </a>
             <div class='title-container'>
-                <a href="index.html">
+                <a id="logo-anchor" href="index.html">
                     <h1>TGIF</h1>
                 </a>
             </div>
         </div>
         <div class="email-container">
-            <a id='contact-email' href="mailto:info@tgif.net">info@tgif.net</a>
+            <a id='contact-email' href="mailto:info@tgif.net"><img alt="mail icon" id="mail-image"
+                    src="/assets/Images/mailicon.png">info@tgif.net
+            </a>
         </div>
     </div>
 
-    <div class="navbar-container">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Congress 113
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="house.html">House</a></li>
-                                <li><a class="dropdown-item" href="senate.html">Senate</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Attendance
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">House</a></li>
-                                <li><a class="dropdown-item" href="#">Senate</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Party Loyalty
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">House</a></li>
-                                <li><a class="dropdown-item" href="#">Senate</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <form class="form-inline my-4 my-lg-4">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button id="searchInput" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </nav>
+    <div class="navigation-container">
+        <ul class="nav nav-tabs nav-fill">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-expanded="false">Congress 113</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="members.html?chamber=house">House</a></li>
+                    <li><a class="dropdown-item" href="members.html?chamber=senate">Senate</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-expanded="false">Attendance</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">House</a></li>
+                    <li><a class="dropdown-item" href="#">Senate</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-expanded="false">Party Loyalty</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">House</a></li>
+                    <li><a class="dropdown-item" href="#">Senate</a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
-
 
     <div class="info-container">
         <div id="info-container-senate">
@@ -128,7 +108,7 @@
         </div>
     </div>
 
-    <div class="table-container">
+    <div class="table-container-senate">
         <table class="table">
             <thead>
                 <tr>
@@ -144,9 +124,24 @@
             </tbody>
         </table>
     </div>
+    <div class="table-container-house">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Party</th>
+                    <th>State</th>
+                    <th>Years in Office</th>
+                </tr>
+            </thead>
+            <tbody id="house-table-body">
+
+            </tbody>
+        </table>
+    </div>
 
     <div class="footer-container">
-        <p>&copy; 2023 TGIF | All rights reserved.</p>
+        <p>&copy; 2025 TGIF | All rights reserved.</p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
