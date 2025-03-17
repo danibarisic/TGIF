@@ -3,15 +3,16 @@ export const fetchJsonHouse = async (partyFilters = [], stateFilter = '') => {
         const response = await fetch('./houseData.json');
         const data = await response.json();
         const members = data.results[0].members;
-        console.log(response);
         const selectMember = members.map(member => ({
             name: member.first_name + ' ' + member.last_name,
             state: member.state,
             party: member.party,
-            years: (parseInt(member.begin_date) - parseInt(member.end_date)) * -1,
+            years: (parseInt(member.end_date) - parseInt(member.begin_date)),
             url: member.api_uri
         }));
+
         makeMemberRows(selectMember, partyFilters, stateFilter, '#house-table-body', 'house-senator-name');
+
     } catch (error) {
         console.error(error);
     }
@@ -30,15 +31,17 @@ export const fetchJsonSenate = async (partyFilters = [], stateFilter = '') => {
             percVotes: member.votes_with_party_pct,
             url: member.url
         }));
+
         makeMemberRows(selectMember, partyFilters, stateFilter, '#senate-table-body', 'senate-senator-name');
+
     } catch (error) {
         console.error(error);
     }
 };
 
 const createAnchors = (senatorData, className) => {
-    const senatorNameCells = document.querySelectorAll(`.${className}`);
-    senatorNameCells.forEach(cell => {
+    const names = document.querySelectorAll(`.${className}`);
+    names.forEach(cell => {
         const senatorName = cell.textContent.trim();
         const senatorInfo = senatorData.find(senator => senator.name === senatorName);
         const link = document.createElement('a');
@@ -78,20 +81,6 @@ const makeMemberRows = (data, partyFilter, stateFilter, tableBodySelector, class
     });
     createAnchors(filteredData, className);
 };
-
-document.addEventListener('DOMContentLoaded', () => {
-    const partyCheckboxes = document.querySelectorAll('.partyFilterCheckbox');
-    const stateFilterSelect = document.getElementById('select-state');
-
-    partyCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-            applyFilters();
-        });
-    });
-    stateFilterSelect.addEventListener('change', () => {
-        applyFilters();
-    });
-});
 
 const applyFilters = async () => {
     const partyFilters = Array.from(document.querySelectorAll('.partyFilterCheckbox:checked')).map(checkbox => checkbox.value);
@@ -133,24 +122,25 @@ export const buildStateMenu = async () => {
 export const displayMembers = () => {
     const urlParameter = new URLSearchParams(window.location.search);
     const chamber = urlParameter.get('chamber');
-    const informationHouse = document.getElementById('info-container-house');
-    const informationSenate = document.getElementById('info-container-senate');
-    const tableHouse = document.getElementsByClassName('table-container-house')[0];
-    const tableSenate = document.getElementsByClassName('table-container-senate')[0];
 
-    if (chamber === 'senate') {
-        if (informationHouse) informationHouse.style.display = 'none';
-        if (tableHouse) tableHouse.style.display = 'none';
-        if (informationSenate) informationSenate.style.display = 'block';
-        if (tableSenate) tableSenate.style.display = 'block';
-    } else {
-        if (informationSenate) informationSenate.style.display = 'none';
-        if (tableSenate) tableSenate.style.display = 'none';
-        if (informationHouse) informationHouse.style.display = 'block';
-        if (tableHouse) tableHouse.style.display = 'block';
+    const infoContainerSenate = document.getElementById('info-container-senate');
+    const tableContainerSenate = document.querySelector('.table-container-senate');
+    const infoContainerHouse = document.getElementById('info-container-house');
+    const tableContainerHouse = document.querySelector('.table-container-house');
+
+    if (infoContainerSenate) {
+        infoContainerSenate.style.display = chamber === 'senate' ? 'block' : 'none';
     }
-}
-
+    if (tableContainerSenate) {
+        tableContainerSenate.style.display = chamber === 'senate' ? 'block' : 'none';
+    }
+    if (infoContainerHouse) {
+        infoContainerHouse.style.display = chamber === 'house' ? 'block' : 'none';
+    }
+    if (tableContainerHouse) {
+        tableContainerHouse.style.display = chamber === 'house' ? 'block' : 'none';
+    }
+};
 
 export const makeLinkActive = () => {
     const currentPage = window.location.href;
@@ -164,12 +154,23 @@ export const makeLinkActive = () => {
             link.classList.remove('active');
             link.style.backgroundColor = '';
         }
-    })
-}
-document.addEventListener('DOMContentLoaded', () => {
-    makeLinkActive();
-})
+    });
+};
 
-displayMembers();
-buildStateMenu();
-applyFilters();
+document.addEventListener('DOMContentLoaded', () => {
+    const partyCheckboxes = document.querySelectorAll('.partyFilterCheckbox');
+    const stateFilterSelect = document.getElementById('select-state');
+    makeLinkActive();
+    displayMembers();
+    buildStateMenu();
+    applyFilters();
+
+    partyCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            applyFilters();
+        });
+    });
+    stateFilterSelect.addEventListener('change', () => {
+        applyFilters();
+    });
+});
