@@ -1,0 +1,252 @@
+@font-face {
+    font-family: NewsReader;
+    src: url(/Fonts/Newsreader/Newsreader-VariableFont_opsz\,wght.ttf);
+}
+
+/* header styles */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 12em;
+
+}
+
+#logo-image {
+    margin-top: 50px;
+    width: 50px;
+    height: 50px;
+}
+
+.title-container {
+    margin-left: 1em;
+    font-size: 20px;
+}
+
+.title-container h1 {
+    text-decoration: none;
+    color: black;
+}
+
+.title-container a:hover {
+    text-decoration: none;
+}
+
+h1 {
+    margin-top: 60px;
+    font-size: 60px;
+    font-family: Newsreader;
+}
+
+#logo-anchor {
+    text-decoration: none;
+}
+
+.email-container {
+    justify-content: right;
+    font-size: 20px;
+    margin-right: 6em;
+    margin-top: 4em;
+}
+
+#contact-email {
+    font-family: Newsreader;
+    color: rgb(0, 178, 243);
+    margin-top: 80px;
+    margin-right: 35px;
+    justify-self: right;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+#mail-image {
+    width: 40px;
+}
+
+/* body styles */
+h2 {
+    font-family: Newsreader;
+    margin: 10px 5em;
+    font-size: 2.5em;
+    padding-bottom: 5px;
+}
+
+h3 {
+    font-family: Newsreader;
+    margin: 10px 5em;
+    font-size: 1.8em;
+}
+
+.attendance-information-container {
+    margin: 2em 10em;
+}
+
+#main-image {
+    width: 250px;
+    margin-right: 13em;
+    margin-top: 150px;
+    margin-left: 0px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.statistic-member-links {
+    font-family: Newsreader;
+    color: rgb(0, 178, 243);
+    text-decoration: none;
+}
+
+#contact-email:hover {
+    text-decoration: underline;
+    transition: 0.2s;
+}
+
+.navigation-container {
+    border: 2px solid rgb(192 192 192);
+    margin: 40px 5.5em;
+}
+
+.nav-link {
+    font-size: 23px;
+    font-weight: 500;
+    font-family: Newsreader;
+    text-decoration: none;
+    color: rgb(0, 178, 243);
+}
+
+.loyalty-header-house,
+.loyalty-header-senate,
+.attendance-header-house,
+.attendance-header-senate {
+    margin-right: 5px;
+    margin-top: 130px;
+}
+
+.dropdown-item {
+    font-size: 20px;
+    font-family: Newsreader;
+    text-decoration: none;
+    color: rgb(0, 178, 243);
+}
+
+.nav-link:hover {
+    text-decoration: none;
+}
+
+.info-container {
+    margin-top: 5em;
+    display: flex;
+    flex-direction: row;
+}
+
+.info-container p {
+    font-family: Newsreader;
+    margin: 2em 10em;
+    width: 60%;
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+.attendance-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5em;
+}
+
+.attendance-information-container {
+    display: inline-block;
+    /* margin-right: 10em; */
+    width: 50%;
+}
+
+.attendance-container p {
+    font-family: Newsreader;
+    font-size: 20px;
+}
+
+.top-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.table-container-top {
+    margin-right: 20em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.table-container-bottom {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.table,
+.table-glance,
+.table-glance-house,
+.table-least,
+.table-most {
+    display: table;
+    table-layout: auto;
+    border: 2px solid rgb(192 192 192);
+    width: 80%;
+    font-family: Newsreader;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    margin-top: 40px;
+    margin-left: 100px;
+}
+
+/* .senate-table-body {
+    font-size: medium;
+} */
+
+.table th,
+.table-glance th,
+.table-glance-house th,
+.table-least th,
+.table-most th {
+    padding: 10px 20px;
+    border: 2px solid rgb(192 192 192);
+    font-family: Newsreader;
+    text-align: center;
+    font-size: 20px;
+}
+
+.table td,
+.table-glance td,
+.table-glance-house td,
+.table-least td,
+.table-most td {
+    padding: 10px 20px;
+    border: 2px solid rgb(192 192 192);
+    font-size: 20px;
+    font-family: Newsreader;
+    text-align: center;
+}
+
+.table-container-bottom {
+    display: flex;
+    flex-direction: row;
+}
+
+/* footer styles */
+.footer-container {
+    display: flex;
+    justify-content: center;
+    border: 2px solid rgb(192 192 192);
+    margin: 20px 5.5em;
+}
+
+.footer-container p {
+    padding: 10px 20px;
+    margin: 10px 20px;
+    font-size: 15px;
+    text-align: center;
+}
