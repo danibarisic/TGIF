@@ -70,7 +70,6 @@ h1 {
 /* body styles */
 h2 {
     font-family: Newsreader;
-    margin: 10px 5em;
     font-size: 2.5em;
     padding-bottom: 5px;
 }
@@ -125,7 +124,7 @@ a:hover {
 .attendance-header-house,
 .attendance-header-senate {
     margin-right: 5px;
-    margin-top: 130px;
+    margin-top: 70px;
 }
 
 .dropdown-item {
@@ -161,6 +160,7 @@ a:hover {
 
 .attendance-information-container {
     display: inline-block;
+    margin-left: 250px;
     /* margin-right: 10em; */
     width: 50%;
 }
@@ -176,7 +176,7 @@ a:hover {
 }
 
 .table-container-top {
-    margin-right: 20em;
+    margin-right: 18em;
     display: flex;
     justify-content: space-around;
 }
@@ -195,17 +195,13 @@ a:hover {
     display: table;
     table-layout: auto;
     border: 2px solid rgb(192 192 192);
-    width: 80%;
+    width: 100%;
     font-family: Newsreader;
     margin: 0 auto;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
     margin-top: 40px;
-    margin-left: 100px;
+    margin-left: 200;
 }
-
-/* .senate-table-body {
-    font-size: medium;
-} */
 
 .table th,
 .table-glance th,
@@ -216,7 +212,7 @@ a:hover {
     border: 2px solid rgb(192 192 192);
     font-family: Newsreader;
     text-align: center;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .table td,
@@ -229,6 +225,7 @@ a:hover {
     font-size: 20px;
     font-family: Newsreader;
     text-align: center;
+    table-layout: auto;
 }
 
 .table-container-bottom {
