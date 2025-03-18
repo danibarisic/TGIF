@@ -14,6 +14,7 @@ export const fetchJsonSenate = async () => {
                 }
             }
         };
+        // Increase count for each party member.
         members.forEach(member => {
             if (member.party === 'D') {
                 statisticKeySenate.senate.statistics.counts.D++;
@@ -65,6 +66,7 @@ export const fetchJsonHouse = async () => {
         const data = await response.json();
         const members = data.results[0].members;
 
+        // Increase count for each party member.
         let sumD = 0;
         let sumR = 0;
         let sumID = 0;
@@ -86,7 +88,6 @@ export const fetchJsonHouse = async () => {
     } catch (error) {
         console.error(error);
     }
-
 }
 
 export const makeStatisticsRowGlance = (data) => {
@@ -147,7 +148,7 @@ export const makeStatisticsRowGlanceHouse = (results) => {
     }
 }
 
-
+// Function to accumulate the counts for each party.
 export const countVotes = (percentageVotes) => {
     const democrats = percentageVotes.filter(senator => senator.party === 'D');
     const totalVotesDemocratic = Math.ceil((democrats.reduce((sum, senator) => sum + senator.votePercentage, 0)) / democrats.length);
@@ -168,6 +169,7 @@ export const countVotes = (percentageVotes) => {
 
 }
 
+// Function for creating the 'Least Engaged' table.
 export const makeStatisticsLeast = (data) => {
     const descending = data.sort((a, b) => b.percentMissed - a.percentMissed);
     const tenLeast = descending.slice(0, 10);
@@ -175,43 +177,50 @@ export const makeStatisticsLeast = (data) => {
 
     for (let i = 0; i < tenLeast.length; i++) {
         const row = document.createElement('tr');
-        const cell1 = document.createElement('td');
-        const cell2 = document.createElement('td');
-        const cell3 = document.createElement('td');
+
+        // Creates 3 cells with element 'td'.
+        const [cell1, cell2, cell3] = [0, 1, 2].map(() => document.createElement('td'));
+        // const cell1 = document.createElement('td');
+        // const cell2 = document.createElement('td');
+        // const cell3 = document.createElement('td');
         cell1.textContent = tenLeast[i].name;
         cell1.classList.add('names');
         cell2.textContent = tenLeast[i].missedVotes;
         cell3.textContent = tenLeast[i].percentMissed;
-        row.appendChild(cell1);
-        row.appendChild(cell2);
-        row.appendChild(cell3);
+
+        // Append all cells to the row.
+        [cell1, cell2, cell3].forEach(cell => row.append(cell));
+        // row.appendChild(cell1);
+        // row.appendChild(cell2);
+        // row.appendChild(cell3);
         tableBody.appendChild(row);
     }
-
-
 }
 
+// Function for creating the 'Most Engaged' table.
 export const makeStatisticsMost = (data) => {
     const ascending = data.sort((a, b) => a.percentMissed - b.percentMissed);
     const tenMost = ascending.slice(0, 10);
     const tableBody = document.querySelector('.table-most-body');
 
+    // iterate through 'data' and create a row for each [i]
     for (let i = 0; i < tenMost.length; i++) {
         const row = document.createElement('tr');
-        const cell1 = document.createElement('td');
-        const cell2 = document.createElement('td');
-        const cell3 = document.createElement('td');
+
+        // Creates 3 cells with element 'td'.
+        const [cell1, cell2, cell3] = [0, 1, 2].map(() => document.createElement('td'));
         cell1.textContent = tenMost[i].name;
         cell1.classList.add('names');
         cell2.textContent = tenMost[i].missedVotes;
         cell3.textContent = tenMost[i].percentMissed;
-        row.appendChild(cell1);
-        row.appendChild(cell2);
-        row.appendChild(cell3);
+
+        // Append all cells to the row.
+        [cell1, cell2, cell3].forEach(cell => row.appendChild(cell));
         tableBody.appendChild(row);
     }
 }
 
+// Function for creating links to member webpages.
 export const createLinks = (data) => {
     const nameCell = document.querySelectorAll('.names');
     nameCell.forEach(cell => {
@@ -231,6 +240,7 @@ export const createLinks = (data) => {
     })
 }
 
+// Function to display members based on the search parameter. ie: 'house' or 'senate'.
 export const displayMembers = () => {
     const urlParameter = new URLSearchParams(window.location.search);
     const chamber = urlParameter.get('chamber');
@@ -238,6 +248,7 @@ export const displayMembers = () => {
     const glanceContainerSenate = document.querySelector('.glance-container-senate');
     const glanceContainerHouse = document.querySelector('.glance-container-house');
 
+    // Selecting for removal with 'house' because of missing information.
     const finalColoumn = document.querySelector('.finalColoumnHouse');
 
     if (chamber === 'house') {

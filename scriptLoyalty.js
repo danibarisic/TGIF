@@ -8,9 +8,12 @@ export const fetchJsonSenate = async () => {
             partyVotes: (member.total_votes - member.missed_votes),
             percentOfVotes: member.votes_with_party_pct
         }))
+
+        // Creating the top 10%.
         const ascending = selectMembers.sort((a, b) => b.percentOfVotes - a.percentOfVotes);
         const topTen = ascending.splice(0, 10);
 
+        // Creating the bottom 10%.
         const descending = selectMembers.sort((a, b) => a.percentOfVotes - b.percentOfVotes);
         const bottomTen = descending.splice(0, 10);
 
@@ -115,45 +118,54 @@ export const makeStatisticsRowGlanceHouse = (results) => {
         cell.textContent = numbers[key];
     }
 }
-
+// Function for creating 'Least Loyal' table.
 export const makeStatisticsLeast = (data) => {
     const tableBody = document.querySelector('.table-least-body-loyalty');
-    tableBody.innerHTML = '';
+    tableBody.innerHTML = ''; // Initialize tableBody.
+
+    // Iterate through 'data' and create a row for each [i].
     for (let i = 0; i < data.length; i++) {
         const row = document.createElement('tr');
-        const cell1 = document.createElement('td');
-        const cell2 = document.createElement('td');
-        const cell3 = document.createElement('td');
+
+        // Creating 3 cells with element 'td'.
+        const [cell1, cell2, cell3] = [0, 1, 2].map(() => document.createElement('td'));
+
         cell1.textContent = data[i].name;
         cell1.classList.add('names');
         cell2.textContent = data[i].partyVotes;
         cell3.textContent = data[i].percentOfVotes;
-        row.appendChild(cell1);
-        row.appendChild(cell2);
-        row.appendChild(cell3);
+
+        // Append all cells to row.
+        [cell1, cell2, cell3].forEach(cell => row.appendChild(cell));
+
         tableBody.appendChild(row);
     }
 }
 
+// Function for creating 'Most Loyal' table.
 export const makeStatisticsMost = (data) => {
     const tableBody = document.querySelector('.table-most-body-loyalty');
-    tableBody.innerHTML = '';
+    tableBody.innerHTML = ''; // Initialize tableBody.
+
+    // Iterate through 'data' and create a row for each [i].
     for (let i = 0; i < data.length; i++) {
         const row = document.createElement('tr');
-        const cell1 = document.createElement('td');
-        const cell2 = document.createElement('td');
-        const cell3 = document.createElement('td');
+        // Creating 3 cells with element 'td'.
+        const [cell1, cell2, cell3] = [0, 1, 2].map(() => document.createElement('td'));
+
         cell1.textContent = data[i].name;
         cell1.classList.add('names');
         cell2.textContent = data[i].partyVotes;
         cell3.textContent = data[i].percentOfVotes;
-        row.appendChild(cell1);
-        row.appendChild(cell2);
-        row.appendChild(cell3);
+
+        // Appending all cells to row.
+        [cell1, cell2, cell3].forEach(cell => row.appendChild(cell));
+
         tableBody.appendChild(row);
     }
 }
 
+// Function for creating links to member webpages.
 export const createLinks = (data) => {
     const nameCell = document.querySelectorAll('.names');
     nameCell.forEach(cell => {
@@ -169,6 +181,7 @@ export const createLinks = (data) => {
     })
 }
 
+// Function to display members based on the search parameter. ie: 'house' or 'senate'.
 export const displayMembers = () => {
     const urlParameter = new URLSearchParams(window.location.search);
     const chamber = urlParameter.get('chamber');
