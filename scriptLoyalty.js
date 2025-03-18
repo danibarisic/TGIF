@@ -176,13 +176,17 @@ export const displayMembers = () => {
     const loyaltyGlanceSenate = document.querySelector('.loyalty-glance-senate');
     const loyaltyGlanceHouse = document.querySelector('.loyalty-glance-house');
 
+    const finalColoumn = document.querySelector('.finalColoumnHouse');
+
     if (chamber === 'house') {
-        loyaltyGlanceHouse.style.display = 'block';
+        loyaltyGlanceHouse.style.display = 'block',
+            finalColoumn.style.display = 'none';
     } else {
         loyaltyGlanceHouse.style.display = 'none';
     }
     if (chamber === 'senate') {
-        loyaltyGlanceSenate.style.display = 'block';
+        loyaltyGlanceSenate.style.display = 'block',
+            finalColoumn.style.display = 'block';
     } else {
         loyaltyGlanceSenate.style.display = 'none';
     }

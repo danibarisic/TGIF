@@ -238,13 +238,17 @@ export const displayMembers = () => {
     const glanceContainerSenate = document.querySelector('.glance-container-senate');
     const glanceContainerHouse = document.querySelector('.glance-container-house');
 
+    const finalColoumn = document.querySelector('.finalColoumnHouse');
+
     if (chamber === 'house') {
-        glanceContainerHouse.style.display = 'block';
+        glanceContainerHouse.style.display = 'block',
+            finalColoumn.style.display = 'none';
     } else {
         glanceContainerHouse.style.display = 'none';
     }
     if (chamber === 'senate') {
-        glanceContainerSenate.style.display = 'block';
+        glanceContainerSenate.style.display = 'block',
+            finalColoumn.style.display = 'block';
     } else {
         glanceContainerSenate.style.display = 'none';
     }
