@@ -265,6 +265,19 @@ export const displayMembers = () => {
     }
 }
 
+// Changes background colour a little darker on scroll to enhance contrast.
+export const changeColourScroll = () => {
+    const navBar = document.querySelector('.navigation-container');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            navBar.style.backgroundColor = 'rgb(240, 240, 240)';
+        } else {
+            navBar.style.backgroundColor = 'rgb(255, 255, 255)';
+        }
+    })
+};
+
+changeColourScroll();
 displayMembers();
 fetchJsonHouse();
 fetchJsonSenate();
