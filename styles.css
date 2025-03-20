@@ -117,8 +117,11 @@ a:hover {
 }
 
 .navigation-container {
+    background-color: rgb(255, 255, 255);
     border: 2px solid rgb(192 192 192);
     margin: 40px 5.5em;
+    position: sticky;
+    top: 2%;
 }
 
 .nav-link {
@@ -213,6 +216,13 @@ a:hover {
 #select-state {
     padding: 5px;
     margin-left: 20px;
+}
+
+.table-container-senate,
+.table-container-house {
+    height: 470px;
+    overflow-y: auto;
+    margin-bottom: 100px;
 }
 
 .table,
