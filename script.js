@@ -119,6 +119,7 @@ export const buildStateMenu = async () => {
     }
 };
 
+// Displays containers and tables depending on search parameter.
 export const displayMembers = () => {
     const urlParameter = new URLSearchParams(window.location.search);
     const chamber = urlParameter.get('chamber');
@@ -157,9 +158,22 @@ export const makeLinkActive = () => {
     });
 };
 
+// Changes background colour a little darker on scroll to enhance contrast.
+export const changeColourScroll = () => {
+    const navBar = document.querySelector('.navigation-container');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            navBar.style.backgroundColor = 'rgb(240, 240, 240)';
+        } else {
+            navBar.style.backgroundColor = 'rgb(255, 255, 255)';
+        }
+    })
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const partyCheckboxes = document.querySelectorAll('.partyFilterCheckbox');
     const stateFilterSelect = document.getElementById('select-state');
+    changeColourScroll();
     makeLinkActive();
     displayMembers();
     buildStateMenu();
