@@ -1,17 +1,23 @@
+
+let storedSenateMembers = null;
+let storedHouseMembers = null;
+
 export const fetchJsonHouse = async (partyFilters = [], stateFilter = '') => {
     try {
-        const response = await fetch('./houseData.json');
-        const data = await response.json();
-        const members = data.results[0].members;
-        const selectMember = members.map(member => ({
-            name: member.first_name + ' ' + member.last_name,
-            state: member.state,
-            party: member.party,
-            years: (parseInt(member.end_date) - parseInt(member.begin_date)),
-            url: member.api_uri
-        }));
+        if (!storedHouseMembers) {
+            const response = await fetch('./houseData.json');
+            const data = await response.json();
+            const members = data.results[0].members;
+            storedHouseMembers = members.map(member => ({
+                name: member.first_name + ' ' + member.last_name,
+                state: member.state,
+                party: member.party,
+                years: (parseInt(member.end_date) - parseInt(member.begin_date)),
+                url: member.api_uri
+            }));
+        }
 
-        makeMemberRows(selectMember, partyFilters, stateFilter, '#house-table-body', 'house-senator-name');
+        filterAndDisplayHouse(storedHouseMembers, partyFilters, stateFilter);
 
     } catch (error) {
         console.error(error);
@@ -20,24 +26,27 @@ export const fetchJsonHouse = async (partyFilters = [], stateFilter = '') => {
 
 export const fetchJsonSenate = async (partyFilters = [], stateFilter = '') => {
     try {
-        const response = await fetch('./senateData.json');
-        const data = await response.json();
-        const members = data.results[0].members;
-        const selectMember = members.map(member => ({
-            name: member.first_name + ' ' + member.last_name,
-            state: member.state,
-            party: member.party,
-            years: member.seniority,
-            percVotes: member.votes_with_party_pct,
-            url: member.url
-        }));
-
-        makeMemberRows(selectMember, partyFilters, stateFilter, '#senate-table-body', 'senate-senator-name');
+        if (!storedSenateMembers) {
+            const response = await fetch('./senateData.json');
+            const data = await response.json();
+            const members = data.results[0].members;
+            storedSenateMembers = members.map(member => ({
+                name: member.first_name + ' ' + member.last_name,
+                state: member.state,
+                party: member.party,
+                years: member.seniority,
+                percVotes: member.votes_with_party_pct,
+                url: member.url
+            }));
+        }
+        filterAndDisplaySenate(storedSenateMembers, partyFilters, stateFilter);
 
     } catch (error) {
         console.error(error);
     }
 };
+
+// let storedSenateMembers = null;
 
 const createAnchors = (senatorData, className) => {
     const names = document.querySelectorAll(`.${className}`);
@@ -82,6 +91,28 @@ const makeMemberRows = (data, partyFilter, stateFilter, tableBodySelector, class
     createAnchors(filteredData, className);
 };
 
+const filterAndDisplayHouse = (members, partyFilters, stateFilter) => {
+    let filteredMembers = members;
+    if (partyFilters.length > 0) {
+        filteredMembers = filteredMembers.filter(member => partyFilters.includes(member.party));
+    }
+    if (stateFilter) {
+        filteredMembers = filteredMembers.filter(member => member.state === stateFilter);
+    }
+    makeMemberRows(filteredMembers, partyFilters, stateFilter, '#house-table-body', 'house-senator-name');
+};
+
+const filterAndDisplaySenate = (members, partyFilters, stateFilter) => {
+    let filteredMembers = members;
+    if (partyFilters.length > 0) {
+        filteredMembers = filteredMembers.filter(member => partyFilters.includes(member.party));
+    }
+    if (stateFilter) {
+        filteredMembers = filteredMembers.filter(member => member.state === stateFilter);
+    }
+    makeMemberRows(filteredMembers, partyFilters, stateFilter, '#senate-table-body', 'senate-senator-name');
+};
+
 const applyFilters = async () => {
     const partyFilters = Array.from(document.querySelectorAll('.partyFilterCheckbox:checked')).map(checkbox => checkbox.value);
     const stateFilter = document.getElementById('select-state').value;
@@ -90,9 +121,17 @@ const applyFilters = async () => {
     const chamber = urlParameter.get('chamber');
 
     if (chamber === 'senate') {
-        await fetchJsonSenate(partyFilters, stateFilter);
+        if (storedSenateMembers) {
+            filterAndDisplaySenate(storedSenateMembers, partyFilters, stateFilter);
+        } else {
+            await fetchJsonSenate(partyFilters, stateFilter);
+        }
     } else {
-        await fetchJsonHouse(partyFilters, stateFilter);
+        if (storedHouseMembers) {
+            filterAndDisplayHouse(storedHouseMembers, partyFilters, stateFilter);
+        } else {
+            await fetchJsonHouse(partyFilters, stateFilter);
+        }
     }
 };
 
@@ -143,6 +182,7 @@ export const displayMembers = () => {
     }
 };
 
+// Makes home link in navbar change colour when active.
 export const makeLinkActive = () => {
     const currentPage = window.location.href;
     const links = document.querySelectorAll('.nav-link');
